@@ -1,0 +1,71 @@
+# Análisis de Salud Pública en Argentina en periodos determinados de tiempo🏥
+
+Análisis exploratorio de datos de mortalidad en Argentina usando datos abiertos 
+oficiales del Ministerio de Salud de la Nación (DEIS).
+
+## Pregunta central
+¿Qué nos dicen los datos oficiales sobre las principales causas de muerte 
+en Argentina y cómo se distribuyen por provincia, sexo y a lo largo del tiempo?
+
+## Datasets utilizados
+- Defunciones por provincia, sexo, causa (CIE-10) y grupo etario — 2022, 2023 y 2024
+- Serie histórica de defunciones por jurisdicción — 1914 a 2024
+- Fuente: [DEIS — Ministerio de Salud de la Nación](https://www.argentina.gob.ar/salud/deis/datos/defunciones)
+
+## Principales hallazgos
+
+**1. Cardiovasculares es la primera causa de muerte**, con más de 314k defunciones 
+en 2022-2024, superando a tumores y enfermedades respiratorias.
+
+**2. El cáncer está más distribuido demográficamente** que las cardiovasculares, 
+que se concentran en perfiles específicos de edad y región.
+
+**3. Las causas mal definidas (CIE-10: R) representan ~27k muertes anuales** 
+con tendencia creciente, evidenciando problemas en la certificación de defunciones 
+y subestimación de causas específicas.
+
+**4. La distribución por provincia es proporcional a la población**, 
+validando la consistencia interna del dataset.
+
+**5. El pico de 2020-2021 es el evento más disruptivo en 50 años**, 
+superando en impacto relativo a la gripe española de 1918.
+
+## Visualizaciones
+
+### Evolución de principales causas 2022-2024
+![Evolución](data/evolucion_causas.png)
+
+### Defunciones por causa y sexo
+![Sexo](data/causas_por_sexo.png)
+
+### Top 10 provincias
+![Provincias](data/defunciones_por_provincia.png)
+
+### Serie histórica 1914-2024
+![Historia](data/serie_historica_clean.png)
+
+## Stack técnico
+- Python 3.12
+- pandas, matplotlib, seaborn
+- Jupyter Notebook
+- Datos: API CKAN / descarga directa DEIS
+
+## Nota metodológica
+Los años 1971-1974 fueron excluidos de la serie histórica por presentar 
+datos incompletos en el registro oficial de la DEIS.
+Los códigos PROVRES siguen la codificación INDEC de jurisdicciones.
+
+## Estructura del proyecto
+```
+argentina-salud-publica-eda/
+├── notebooks/
+│   └── 01_eda_salud_argentina.ipynb
+├── src/
+│   └── data_fetcher.py
+├── data/
+│   ├── evolucion_causas.png
+│   ├── causas_por_sexo.png
+│   ├── defunciones_por_provincia.png
+│   └── serie_historica_clean.png
+└── README.md
+```
